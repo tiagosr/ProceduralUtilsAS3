@@ -1,5 +1,6 @@
 package com.pixelofview.utils.procedural
 {
+	import com.pixelofview.audio.fm.test.TestFM;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	
@@ -9,7 +10,7 @@ package com.pixelofview.utils.procedural
 	 */
 	public class Main extends Sprite 
 	{
-		
+		private var test_fm:TestFM;
 		public function Main():void 
 		{
 			if (stage) init();
@@ -20,6 +21,10 @@ package com.pixelofview.utils.procedural
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
+			
+			test_fm = new TestFM();
+			addChild(test_fm);
+			test_fm.setup();
 		}
 		
 	}

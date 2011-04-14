@@ -9,7 +9,8 @@ package com.pixelofview.audio.fm
 	{
 		public var matrix:FMOperatorMatrix;
 		public var volume:Number;
-		public var panning:Number;
+		public var left:Number;
+		public var right:Number;
 		public var octave:int;
 		public var note:Number;
 		public var velocity:Number;
@@ -18,7 +19,8 @@ package com.pixelofview.audio.fm
 		{
 			matrix = new FMOperatorMatrix(8);
 			volume = 0;
-			panning = 0;
+			left = 1.0;
+			right = 1.0;
 			octave = 0;
 			note = 0;
 			velocity = 0;
@@ -31,14 +33,26 @@ package com.pixelofview.audio.fm
 			velocity = new_velocity;
 			matrix.reset();
 		}
-		public function changeVelocity(new_velocity:Number) {
+		public function changeVelocity(new_velocity:Number):void {
 			velocity = new_velocity;
 		}
-		public function releaseNote() {
+		public function releaseNote():void {
 			velocity = 0.0;
 		}
-		public function sample(sample_delta:Number):FMStereoSample {
-			var level:Number;
+		public function setPanning(panning:Number):void
+		{
+			left = 1.0 - panning;
+			right = 1.0 + panning;
+			if (left > 1.0) left = 1.0;
+			if (left < 0.0) left = 0.0;
+			if (right > 1.0) right = 1.0;
+			if (right < 0.0) right = 0.0;
+			
+		}
+		public function sample(sample_delta:Number):FMStereoSample
+		{
+			var level:Number = matrix.sample(sample_delta, octave, note);
+			return new FMStereoSample(level*left, level*right);
 		}
 	}
 

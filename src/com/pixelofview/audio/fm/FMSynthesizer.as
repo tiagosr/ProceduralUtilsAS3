@@ -31,7 +31,7 @@ package com.pixelofview.audio.fm
 		}
 		
 		public function sample(sample_delta:Number):FMStereoSample {
-			var value:FMStereoSample = FMStereoSample(0, 0);
+			var value:FMStereoSample = new FMStereoSample(0, 0);
 			
 			for (var i:int = 0; i < 32; i++) {
 				value.add(channels[i].sample(sample_delta));

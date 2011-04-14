@@ -36,7 +36,7 @@ package com.pixelofview.audio.fm
 		
 		public function sample(phase:Number):Number
 		{
-			var level = (reverse_inverse & 1) ? -1.0 : 1.0;
+			var level:Number = (reverse_inverse & 1) ? -1.0 : 1.0;
 			if (pulse_periods >= 1) {
 				if (phase % (pulse_periods+1) > 1) {
 					return 0;
@@ -56,7 +56,7 @@ package com.pixelofview.audio.fm
 				}
 				case Wave_Sine:
 				{
-					return Math.sin(phase * Math.PI) * level;
+					return Math.sin(phase * 2.0 * Math.PI) * level;
 				}
 				case Wave_Square:
 				{

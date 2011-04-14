@@ -17,6 +17,9 @@ package com.pixelofview.audio.fm.test
 			synth = new FMSynthesizer();
 		}
 		
+		public function setup():void {
+			synth.setupSound();			
+		}
 	}
 
 }

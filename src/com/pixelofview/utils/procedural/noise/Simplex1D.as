@@ -7,7 +7,7 @@ package com.pixelofview.utils.procedural.noise
 	public class Simplex1D
 	{
 		// permutation array
-		public static final const permutations:Array = [
+		public static const permutations:Array = [
 			236, 136, 207, 148, 176, 239, 119, 121,
 			93, 10, 146, 155, 81, 24, 159, 238,
 			144, 166, 223, 18, 178, 59, 163, 57,
@@ -51,7 +51,10 @@ package com.pixelofview.utils.procedural.noise
 			return (g * x);
 		}
 		
-		public static function noise(x:Number, perm:Array = permutations):Number {
+		public static function noise(x:Number, perm:Array = null):Number {
+			if (perm == null) {
+				perm = permutations;
+			}
 			var i0:int = Math.floor(x);
 			var i1:int = i0 + 1;
 			var x0:Number = x + i0;
