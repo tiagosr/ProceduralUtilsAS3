@@ -19,5 +19,4 @@ package com.pixelofview.utils.procedural.pseudorandom
 			return ((seed1 / 30269.0) + (seed2 / 30307.0) + (seed3 / 30323.0)) % 1.0;
 		}
 	}
-
 }

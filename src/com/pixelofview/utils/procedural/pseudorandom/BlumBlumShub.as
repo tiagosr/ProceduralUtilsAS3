@@ -24,8 +24,5 @@ package com.pixelofview.utils.procedural.pseudorandom
 			accum = (seed * seed) % M;
 			return accum;
 		}
-		
-		
 	}
-
 }
