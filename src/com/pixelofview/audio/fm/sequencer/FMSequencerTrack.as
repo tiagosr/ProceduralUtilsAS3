@@ -2,12 +2,14 @@ package com.pixelofview.audio.fm.sequencer
 {
 	import com.pixelofview.audio.fm.FMSynthesizer;
 	/**
-	 * ...
-	 * @author ...
+	 * FM Synthesizer
+	 * Channel track data for the sequencer, with instrument data
+	 * @author Tiago Rezende
 	 */
 	public class FMSequencerTrack
 	{
 		public var steps:Array;
+		public var instrument:FMInstrument;
 		
 		public function FMSequencerTrack() 
 		{

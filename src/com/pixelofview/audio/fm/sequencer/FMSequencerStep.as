@@ -2,8 +2,9 @@ package com.pixelofview.audio.fm.sequencer
 {
 	import com.pixelofview.audio.fm.FMSynthesizer;
 	/**
-	 * ...
-	 * @author ...
+	 * FM Synthesizer
+	 * Sequencer Track step data, with effect state machine
+	 * @author Tiago Rezende
 	 */
 	public class FMSequencerStep
 	{

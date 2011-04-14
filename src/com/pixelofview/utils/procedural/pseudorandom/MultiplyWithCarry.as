@@ -1,7 +1,7 @@
 package com.pixelofview.utils.procedural.pseudorandom 
 {
 	/**
-	 * ...
+	 * Multiply-With-Carry Pseudorandom Number Generator
 	 * @author Tiago Rezende
 	 */
 	public class MultiplyWithCarry

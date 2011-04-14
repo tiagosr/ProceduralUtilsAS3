@@ -17,7 +17,7 @@ package com.pixelofview.utils.procedural.pseudorandom
 			accum = seed;
 		}
 		
-		public function generate(seed:uint = accum)
+		public function generate(seed:uint = accum):uint
 		{
 			var bit:uint = ((seed >> t0) ^ (seed >> t1) ^ (seed >> t2) ^ (seed >> t3) ^ 1) & 1;
 			accum = (seed << 1) + bit;

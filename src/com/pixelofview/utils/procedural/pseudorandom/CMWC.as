@@ -22,7 +22,7 @@ package com.pixelofview.utils.procedural.pseudorandom
 			carry = cseed;
 		}
 		
-		public function generate(seed:uint = accum, cseed:uint = carry)
+		public function generate(seed:uint = accum, cseed:uint = carry):uint
 		{
 			var al:uint = seed & 0xffff, bl:uint = multiplier & 0xffff,
 				ah:uint = seed >> 16, bh:uint = multiplier >> 16;
