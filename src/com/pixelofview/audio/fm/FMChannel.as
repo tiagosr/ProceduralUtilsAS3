@@ -7,6 +7,8 @@ package com.pixelofview.audio.fm
 	 */
 	public class FMChannel
 	{
+		public static const OPERATOR_COUNT:int = 8;
+		
 		public var matrix:FMOperatorMatrix;
 		public var volume:Number;
 		public var left:Number;
@@ -17,7 +19,7 @@ package com.pixelofview.audio.fm
 		
 		public function FMChannel():void
 		{
-			matrix = new FMOperatorMatrix(8);
+			matrix = new FMOperatorMatrix(OPERATOR_COUNT);
 			volume = 0;
 			left = 1.0;
 			right = 1.0;

@@ -45,7 +45,7 @@ package com.pixelofview.audio.fm
 			note_on = 0;
 		}
 		
-		public function sample(sample_delta:Number, octave:int, note:Number, phase_offset:Number, level_offset:Number):Number {
+		public function sample(sample_delta:Number, octave:int, note:Number, offset:Number):Number {
 			if (independent_note) {
 				octave = i_octave;
 				note = i_note;
@@ -58,9 +58,9 @@ package com.pixelofview.audio.fm
 			
 			phase += frequency * sample_delta;
 			
-			var phase2:Number = phase + phase_offset + (lfo_value * lfo_phase_influence);
+			var phase2:Number = phase + offset + (lfo_value * lfo_phase_influence);
 			
-			return (envelope_value * oscillator.sample(phase2) * index) + index_offset + level_offset + (lfo_value + lfo_amplitude_influence);
+			return (envelope_value * oscillator.sample(phase2) * index) + index_offset + (lfo_value + lfo_amplitude_influence);
 		}
 	}
 

@@ -16,12 +16,17 @@ package com.pixelofview.audio.fm.sequencer
 			steps = new Array();
 		}
 		
+		public function setup(synth:FMSynthesizer, channel:uint)
+		{
+			
+		}
+		
 		public function addStep(step_str:FMSequencerStep)
 		{
 			steps.push(step_str);
 		}
 		
-		public function beat(beat_num:int, synth:FMSynthesizer, channel:int)
+		public function beat(beat_num:int, synth:FMSynthesizer, channel:uint)
 		{
 			
 		}

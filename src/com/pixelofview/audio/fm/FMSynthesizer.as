@@ -18,6 +18,7 @@ package com.pixelofview.audio.fm
 	
 	public class FMSynthesizer
 	{
+		public static const CHANNEL_COUNT:int = 32;
 		public var channels:Array;
 		
 		public var sound:Sound;
@@ -25,7 +26,7 @@ package com.pixelofview.audio.fm
 		public function FMSynthesizer() 
 		{
 			channels = new Array();
-			for (var i:int = 0; i < 32; i++) {
+			for (var i:int = 0; i < CHANNEL_COUNT; i++) {
 				channels.push(new FMChannel());
 			}
 		}
@@ -33,7 +34,7 @@ package com.pixelofview.audio.fm
 		public function sample(sample_delta:Number):FMStereoSample {
 			var value:FMStereoSample = new FMStereoSample(0, 0);
 			
-			for (var i:int = 0; i < 32; i++) {
+			for (var i:int = 0; i < CHANNEL_COUNT; i++) {
 				value.add(channels[i].sample(sample_delta));
 			}
 			

@@ -1,5 +1,6 @@
 package com.pixelofview.audio.fm.sequencer 
 {
+	import flash.utils.Dictionary;
 	/**
 	 * ...
 	 * @author ...
@@ -21,17 +22,44 @@ package com.pixelofview.audio.fm.sequencer
 		public static const G:Number = 196.00 / 4.0;
 		public static const Gs:Number = 207.65 / 4.0;
 		
-		public static const Bf:Number = As;
-		public static const Cf:Number = B;
-		public static const Df:Number = Cs;
-		public static const Ef:Number = Ds;
-		public static const Es:Number = F;
-		public static const Ff:Number = E;
-		public static const Gf:Number = Fs;
-		public static const Af:Number = Gs / 2.0; // one octave below
+		public static const Bb:Number = As;
+		public static const Cb:Number = B;
+		public static const Db:Number = Cs;
+		public static const Eb:Number = Ds;
+		public static const Eb:Number = F;
+		public static const Fb:Number = E;
+		public static const Gb:Number = Fs;
+		public static const Ab:Number = Gs / 2.0; // one octave below
 		
 		public var note:Number; // negative number means stop note
 		public var octave:int;
+		
+		public static const NOTES:Dictionary = new Dictionary();
+		{
+			NOTES["A"] = A;
+			NOTES["B"] = B;
+			NOTES["C"] = C;
+			NOTES["D"] = D;
+			NOTES["E"] = E;
+			NOTES["F"] = F;
+			NOTES["G"] = G;
+			NOTES["A#"] = As;
+			NOTES["Bb"] = Bb;
+			NOTES["B#"] = Bs;
+			NOTES["Cb"] = Cb;
+			NOTES["C#"] = Cs;
+			NOTES["Db"] = Db;
+			NOTES["D#"] = Ds;
+			NOTES["Eb"] = Eb;
+			NOTES["E#"] = Es;
+			NOTES["Fb"] = Fb;
+			NOTES["F#"] = Fs;
+			NOTES["Gb"] = Gb;
+			NOTES["G#"] = Gs;
+			NOTES["."] = 0.0; // hold note
+			NOTES["-"] = -1.0; // stop note
+		};
+		
 		
 		public function FMNote(_note:Number, _octave:int):void
 		{
@@ -48,73 +76,11 @@ package com.pixelofview.audio.fm.sequencer
 		 */
 		public static function fromString(str:String = ""):FMNote
 		{
-			var notes:Array = [
-				Af, A, As, B, C, Cs, D, Ds, E, F, Fs, G, Gs
-			];
-			var selnote:int = -1;
-			var oct:Number = Number(str[1]);
-			var modifier:int = 0;
-			if (str[1] == "#") {
-				modifier = 1;
-			} else if (str[1] == "f") {
-				modifier = -1;
+			var freq:Number = NOTES.find(str.substring(0,2));
+			if (freq == undefined) {
+				freq = NOTES[str.substring(0, 1)];
 			}
-			if (isNaN(oct)) {
-				oct = Number(str[2]);
-			}
-			switch(str[0]) {
-				case "a":
-				case "A":
-					{
-						selnote = 1;
-					}
-					break;
-				case "b":
-				case "B":
-					{
-						selnote = 3;
-					}
-					break;
-				case "c":
-				case "C":
-					{
-						selnote = 4;
-					}
-					break;
-				case "d":
-				case "D":
-					{
-						selnote = 6;
-					}
-					break;
-				case "e":
-				case "E":
-					{
-						selnote = 8;
-					}
-					break;
-				case "f":
-				case "F":
-					{
-						selnote = 9;
-					}
-					break;
-				case "g":
-				case "G":
-					{
-						selnote = 11;
-					}
-					break;
-				default:
-					{
-						selnote = -1;
-					}
-					break;
-				}
-			
-			if(selnote>=0) {
-				return FMNote(notes[selnote + modifier], int(octave));
-			} else return FMNote( -1.0, 0);
+			return FMNote( -1.0, 0);
 		}
 	}
 

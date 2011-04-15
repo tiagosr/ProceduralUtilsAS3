@@ -2,7 +2,7 @@ package com.pixelofview.utils.procedural
 {
 	import flash.utils.Dictionary;
 	/**
-	 * ...
+	 * Markov Chain Generator
 	 * @author Tiago Rezende
 	 */
 	public class MarkovChain
